@@ -6,7 +6,7 @@ const port = process.env.port || 5001;
 app.use(bodyParser.json());
 
 async function hashtagGenerator(hashtagKeyword){
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({headless: true});
     const page = await browser.newPage();
     await page.goto('https://all-hashtag.com/hashtag-generator.php');
     await page.evaluate((keyword)=>{
