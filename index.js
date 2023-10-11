@@ -25,7 +25,6 @@ async function hashtagGenerator(hashtagKeyword){
 }
 
 app.get('/hashtag', async (req,res)=>{
-    try{
         const keyword = req.body.keyword;
         if(!keyword){
             res.status(400).send({status: false, message: 'please pass the keyword'});
@@ -33,9 +32,6 @@ app.get('/hashtag', async (req,res)=>{
             const result = await hashtagGenerator(keyword);
             res.status(200).send({status: true, message: 'success', data: result});
         }
-    }catch(e){
-        res.status(500).send({status: false, message: 'failed'});
-    }
 });
 
 
